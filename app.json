@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "challenge_plantao_ativo",
+    "slug": "challenge_plantao_ativo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
