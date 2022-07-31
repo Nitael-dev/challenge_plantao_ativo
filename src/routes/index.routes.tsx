@@ -10,9 +10,6 @@ export const Routes = () => {
     <Stack.Navigator
       initialRouteName='Home'
       detachInactiveScreens
-      screenListeners={{
-        state: (props: any) => {console.log(props.data.state.routes.map((e: any) => e.name))}
-      }}
     >
       <Stack.Screen
         name='Home'

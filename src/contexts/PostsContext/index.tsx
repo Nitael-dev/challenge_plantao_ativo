@@ -8,7 +8,7 @@ import { postsService } from "../../services/Posts/index.service";
 interface PostsContextProps {
   posts: PostResponse[];
   setPosts: React.Dispatch<React.SetStateAction<PostResponse[]>>;
-  getPosts: (search?: string) => Promise<void>;
+  getPosts: (search?: string) => Promise< -1 | void >;
   postPosts: (props: PostRequest) => Promise<void>;
   deletePost: (id: number) => Promise<void>;
 }
@@ -25,7 +25,13 @@ export const PostsProvider = ({children}: PostsProviderProps) => {
   const getPosts = useCallback(async (search?: string) => {
     try {
       const data = await postsService.getPosts(search);
-      setPosts(data);
+      if(data.length > 0) {
+        setPosts(data);
+      } else {
+        const data = await postsService.getPosts();
+        setPosts(data);
+        return -1;
+      }
     } catch (error) {
       console.log(error);
       Alert.alert(
@@ -37,8 +43,7 @@ export const PostsProvider = ({children}: PostsProviderProps) => {
 
   const postPosts = useCallback(async ({body, idUser = 1, title}: PostRequest) => {
     try {
-      const data = await postsService.postPosts({body, idUser, title});
-      console.log(data);
+      await postsService.postPosts({body, idUser, title});
     } catch (error) {
       console.log(error);
       Alert.alert(

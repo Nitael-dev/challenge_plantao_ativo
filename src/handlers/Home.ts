@@ -19,14 +19,12 @@ export const handleFavorite = async (
           return;
         }
         if(!!favorites.find((item) => item === String(id))) {
-          console.log('asdasd2');
           const newValue = favorites.filter(item => item !== String(id));
           await AsyncStorage.setItem('favorites', String(newValue));
           setFavoriteLoading && setFavoriteLoading(-1);
           return;
         }
         if(favorites[favorites.length - 1] === String(id)) {
-          console.log('asdasd3');
           let changeable = favorites;
           changeable.pop();
           const newValue = String(changeable);
@@ -49,14 +47,12 @@ export const handleFavorite = async (
       String(asyncItem).split(',')
       : [String(asyncItem)];
       if(!!favorites.find((item) => item === String(id))) {
-        console.log('asdasd2');
         const newValue = favorites.filter(item => item !== String(id));
         await AsyncStorage.setItem('favorites', String(newValue));
         setFavoriteLoading && setFavoriteLoading(-1);
         return;
       }
       if(favorites[favorites.length - 1] === String(id)) {
-        console.log('asdasd3');
         let changeable = favorites;
         changeable.pop();
         const newValue = String(changeable);

@@ -45,6 +45,5 @@ export const CardList = styled.FlatList.attrs({
 
 export const NotFoundResults = styled.View`
   width: 100%;
-  height: 48px;
-  background-color: red;
+  height: 28px;
 `;

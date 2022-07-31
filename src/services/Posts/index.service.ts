@@ -5,7 +5,7 @@ class PostsService {
   async getPosts(text?: string) {
     if(text) {
       const data = await api.get<PostResponse[]>(`/posts?title=${text.toLowerCase()}`);
-      console.log(data);
+      console.log(data.status);
       return data.data;
     } else {
       const { data } = await api.get<PostResponse[]>('/posts');
@@ -18,7 +18,7 @@ class PostsService {
       title,
       idUser
     });
-    return status;
+    console.log(status);
   }
   async deletePosts(id: number) {
     const { status } = await api.delete(`/posts/${id}`);

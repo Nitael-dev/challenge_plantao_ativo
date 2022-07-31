@@ -7,7 +7,7 @@ interface StyledInputProps extends TextInputProps {
 
 export const Container = styled.View`
   margin-bottom: 20px;
-  height: 108px;
+  height: 81px;
   padding: 8px;
 `;
 
